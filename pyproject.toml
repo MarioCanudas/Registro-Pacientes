@@ -4,4 +4,14 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "fastapi>=0.162.2",
+    "httpx>=0.28.1",
+    "mongomock>=4.3.0",
+    "pydantic>=2.14.3",
+    "pydantic-settings>=2.16.2",
+    "pymongo>=4.19.0",
+    "pytest>=9.2.0",
+    "python-dotenv>=1.2.4",
+    "uvicorn[standard]>=0.54.0",
+]
