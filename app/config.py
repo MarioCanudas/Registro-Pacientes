@@ -1,14 +1,18 @@
 """Configuración centralizada del proyecto mediante variables de entorno."""
 
 from functools import lru_cache
-from pydantic import Field
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     """Configuración leída desde variables de entorno o archivo .env."""
 
-    mongo_uri: str = Field(..., alias="MONGO_URI", min_length=1)
+    mongo_uri: str = Field(
+        ...,
+        validation_alias=AliasChoices("MONGO_URI", "MONGODB_URI"),
+        min_length=1,
+    )
     mongo_db_name: str = Field(default="optaGestionDeDatos", alias="MONGO_DB_NAME")
     mongo_collection_name: str = Field(
         default="REGISTRO-PACIENTES", alias="MONGO_COLLECTION_NAME"
